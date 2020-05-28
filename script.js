@@ -44,8 +44,8 @@ function staticLoadPlaces() {
 function dynamicLoadPlaces(position) {
     let params = {
         radius: 300,    // search places not farther than this value (in meters)
-        clientId: 'HZIJGI4COHQ4AI45QXKCDFJWFJ1SFHYDFCCWKPIJDWHLVQVZ',
-        clientSecret: '',
+        clientId: 'HUHNNBSGTO3BYFLYK3NV4FTKQBNNLJS1IWBIP0YLRZJ3S4KV',
+        clientSecret: 'UOYX3YJDFHMVHODRAHBLDND0YFZZI4SWT3JLLMGK4OH3KCZ1',
         version: '20300101',    // foursquare versioning, required but unuseful for this demo
     };
 

@@ -11,10 +11,17 @@ window.onload = () => {
     if (method !== 'static') {
         // first get current user location
         return navigator.geolocation.getCurrentPosition(function (position) {
-            console.log("position >>>>", position);
             // than use it to load from remote APIs some places nearby
             dynamicLoadPlaces(position.coords)
                 .then((places) => {
+                    let currentPlace = {
+                        name: "Your current place",
+                        location: {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                        }
+                    }
+                    places.push(currentPlace);
                     renderPlaces(places);
                 })
         },
@@ -33,8 +40,8 @@ function staticLoadPlaces() {
         {
             name: "Your place name",
             location: {
-                lat: 19.7514798,
-                lng: 75.7138884,
+                lat: 19.080536199999997,
+                lng: 74.7237253,
             }
         },
     ];

@@ -50,7 +50,7 @@ function staticLoadPlaces() {
 // getting places from REST APIs
 function dynamicLoadPlaces(position) {
     let params = {
-        radius: 300,    // search places not farther than this value (in meters)
+        radius: 1500,    // search places not farther than this value (in meters)
         clientId: 'HUHNNBSGTO3BYFLYK3NV4FTKQBNNLJS1IWBIP0YLRZJ3S4KV',
         clientSecret: 'UOYX3YJDFHMVHODRAHBLDND0YFZZI4SWT3JLLMGK4OH3KCZ1',
         version: '20300101',    // foursquare versioning, required but unuseful for this demo
@@ -65,7 +65,6 @@ function dynamicLoadPlaces(position) {
         &radius=${params.radius}
         &client_id=${params.clientId}
         &client_secret=${params.clientSecret}
-        &limit=15
         &v=${params.version}`;
     return fetch(endpoint)
         .then((res) => {

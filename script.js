@@ -1,15 +1,14 @@
 const loadPlaces = function (coords) {
     // COMMENT FOLLOWING LINE IF YOU WANT TO USE STATIC DATA AND ADD COORDINATES IN THE FOLLOWING 'PLACES' ARRAY
     const method = 'api';
-
-    console.log("position.coords>>>", coords);
+    alert(coords.latitude, coords.longitude)
 
     const PLACES = [
         {
             name: "Your place name",
             location: {
-                lat: 19.080536199999997,
-                lng: 74.7237253,
+                lat: 19.0805106,
+                lng: 74.7237268,
             }
         },
     ];
@@ -69,6 +68,13 @@ window.onload = () => {
                     location: {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
+                    }
+                });
+                places.push({
+                    name: "Current Place",
+                    location: {
+                        lat: "19.0805106",
+                        lng: "74.7237268",
                     }
                 });
                 places.forEach((place) => {

@@ -18,6 +18,7 @@
 <script src="./script.js"></script>
 
 <body style='margin: 0; overflow: hidden;'>
+    <button onclick="addLocation()" style="position: absolute; top: 0; z-index: 2;">Mark my location</button>
     <a-scene
         cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;'
         raycaster="objects: [gps-entity-place];"

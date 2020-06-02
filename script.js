@@ -1,23 +1,21 @@
 const loadPlaces = function (coords) {
     // COMMENT FOLLOWING LINE IF YOU WANT TO USE STATIC DATA AND ADD COORDINATES IN THE FOLLOWING 'PLACES' ARRAY
     const method = 'api';
-    alert(coords.latitude, coords.longitude)
-
-    const PLACES = [
-        {
-            name: "Your place name",
-            location: {
-                lat: 19.0805106,
-                lng: 74.7237268,
-            }
-        },
-    ];
+    window.currentLat = coords.latitude;
+    window.currentLng = coords.longitude;
 
     if (method === 'api') {
         return loadPlaceFromAPIs(coords);
     }
-
-    return PLACES;
+    return [
+        {
+            name: "Your current place",
+            location: {
+                lat: coords.latitude,
+                lng: coords.longitude,
+            }
+        },
+    ];
 };
 
 // getting places from REST APIs
@@ -53,6 +51,29 @@ function loadPlaceFromAPIs(position) {
         })
 };
 
+function addLocation() {
+    const latitude = window.currentLat;
+    const longitude = window.currentLng;
+    document.getElementById("demo").innerHTML = "Hello World";
+  }
+
+function addLocation() {
+    const scene = document.querySelector('a-scene');
+    const latitude = window.currentLat;
+    const longitude = window.currentLng;
+    const text = document.createElement('a-link');
+    text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+    text.setAttribute('title', "current location");
+    text.setAttribute('scale', '13 13 13');
+    text.setAttribute('href', 'http://www.example.com/' + "current location");
+
+    text.addEventListener('loaded', () => {
+        window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+    });
+
+    scene.appendChild(text);
+}
+
 
 window.onload = () => {
     const scene = document.querySelector('a-scene');
@@ -63,29 +84,13 @@ window.onload = () => {
         // than use it to load from remote APIs some places nearby
         loadPlaces(position.coords)
             .then((places) => {
-                places.push({
-                    name: "Current Place",
-                    location: {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude,
-                    }
-                });
-                places.push({
-                    name: "Current Place",
-                    location: {
-                        lat: "19.0805106",
-                        lng: "74.7237268",
-                    }
-                });
                 places.forEach((place) => {
                     const latitude = place.location.lat;
                     const longitude = place.location.lng;
-
-                    // add place name
                     const text = document.createElement('a-link');
                     text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
                     text.setAttribute('title', place.name);
-                    text.setAttribute('href', 'http://www.example.com/');
+                    text.setAttribute('href', 'http://www.example.com/' + place.name);
                     text.setAttribute('scale', '13 13 13');
 
                     text.addEventListener('loaded', () => {

@@ -77,7 +77,7 @@ function addLocation() {
 
 window.onload = () => {
     const scene = document.querySelector('a-scene');
-    return null;
+
     // first get current user location
     return navigator.geolocation.getCurrentPosition(function (position) {
 

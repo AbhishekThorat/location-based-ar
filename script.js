@@ -52,12 +52,6 @@ function loadPlaceFromAPIs(position) {
 };
 
 function addLocation() {
-    const latitude = window.currentLat;
-    const longitude = window.currentLng;
-    document.getElementById("demo").innerHTML = "Hello World";
-  }
-
-function addLocation() {
     const scene = document.querySelector('a-scene');
     const latitude = window.currentLat;
     const longitude = window.currentLng;

@@ -58,7 +58,7 @@ function addLocation() {
     const text = document.createElement('a-link');
     text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
     text.setAttribute('title', "current location");
-    text.setAttribute('scale', '13 13 13');
+    text.setAttribute('scale', '5 5 5');
     text.setAttribute('href', 'http://www.example.com/' + "current location");
 
     text.addEventListener('loaded', () => {

@@ -55,17 +55,20 @@ function addLocation() {
     const scene = document.querySelector('a-scene');
     const latitude = window.currentLat;
     const longitude = window.currentLng;
-    const text = document.createElement('a-link');
-    text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-    text.setAttribute('title', "current location");
-    text.setAttribute('scale', '13 13 13');
-    text.setAttribute('href', 'http://www.example.com/' + "current location");
 
-    text.addEventListener('loaded', () => {
+    const locationLinkElement = document.createElement("a-entity");
+    locationLinkElement.setAttribute("gps-entity-place", `latitude: ${latitude}; longitude: ${longitude};`);
+    locationLinkElement.setAttribute("scale", "1 1 1");
+    locationLinkElement.setAttribute("gltf-model", "./assets/articuno/scene.gltf");
+    locationLinkElement.setAttribute("animation-mixer", "true");
+    locationLinkElement.setAttribute("rotation", "0 180 0");
+
+
+    locationLinkElement.addEventListener('loaded', () => {
         window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
     });
 
-    scene.appendChild(text);
+    scene.appendChild(locationLinkElement);
 }
 
 
@@ -81,17 +84,25 @@ window.onload = () => {
                 places.forEach((place) => {
                     const latitude = place.location.lat;
                     const longitude = place.location.lng;
-                    const text = document.createElement('a-link');
-                    text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                    text.setAttribute('title', place.name);
-                    text.setAttribute('href', 'http://www.example.com/' + place.name);
-                    text.setAttribute('scale', '13 13 13');
+                    // const text = document.createElement('a-link');
+                    // text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+                    // text.setAttribute('title', place.name);
+                    // text.setAttribute('href', 'http://www.example.com/' + place.name);
+                    // text.setAttribute('scale', '13 13 13');
 
-                    text.addEventListener('loaded', () => {
-                        window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-                    });
+                    // text.addEventListener('loaded', () => {
+                    //     window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+                    // });
 
-                    scene.appendChild(text);
+                    // scene.appendChild(text);
+                    
+                    const locationLinkElement = document.createElement("a-entity");
+                    locationLinkElement.setAttribute("gps-entity-place", `latitude: ${latitude}; longitude: ${longitude};`);
+                    locationLinkElement.setAttribute("scale", "1 1 1");
+                    locationLinkElement.setAttribute("gltf-model", "./assets/articuno/scene.gltf");
+                    locationLinkElement.setAttribute("animation-mixer", "true");
+                    locationLinkElement.setAttribute("rotation", "0 180 0");
+                    scene.appendChild(locationLinkElement);
                 });
             })
     },

@@ -96,12 +96,22 @@ window.onload = () => {
 
                     // scene.appendChild(text);
                     
+                    const locationTextElement = document.createElement("a-text");
+                    locationTextElement.setAttribute("value", `${place.name}`);
+                    locationTextElement.setAttribute("align", "center");
+                    locationTextElement.setAttribute("look-at", "[gps-camera]");
+                    locationTextElement.setAttribute("gps-entity-place", `latitude: ${latitude}; longitude: ${longitude};`);
+                    locationTextElement.setAttribute("scale", "13 13 13");
+                    
                     const locationLinkElement = document.createElement("a-entity");
                     locationLinkElement.setAttribute("gps-entity-place", `latitude: ${latitude}; longitude: ${longitude};`);
                     locationLinkElement.setAttribute("scale", "1 1 1");
                     locationLinkElement.setAttribute("gltf-model", "./assets/articuno/scene.gltf");
                     locationLinkElement.setAttribute("animation-mixer", "true");
                     locationLinkElement.setAttribute("rotation", "0 180 0");
+                    locationLinkElement.setAttribute("look-at", "[gps-camera]");
+
+                    scene.appendChild(locationTextElement);
                     scene.appendChild(locationLinkElement);
                 });
             })

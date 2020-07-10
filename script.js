@@ -105,9 +105,9 @@ window.onload = () => {
                     
                     const locationLinkElement = document.createElement("a-entity");
                     locationLinkElement.setAttribute("gps-entity-place", `latitude: ${latitude}; longitude: ${longitude};`);
-                    locationLinkElement.setAttribute("scale", "1 1 1");
-                    locationLinkElement.setAttribute("gltf-model", "./assets/articuno/scene.gltf");
-                    locationLinkElement.setAttribute("animation-mixer", "true");
+                    locationLinkElement.setAttribute("scale", "13 13 13");
+                    locationLinkElement.setAttribute("gltf-model", "./assets/magnemite/scene.gltf");
+                    locationLinkElement.setAttribute("animation-mixer", "");
                     locationLinkElement.setAttribute("rotation", "0 180 0");
                     locationLinkElement.setAttribute("look-at", "[gps-camera]");
 

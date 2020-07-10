@@ -49,12 +49,14 @@
           <a-asset-item id="animated-asset" src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-playground/models/CesiumMan.gltf" />
         </a-assets>
         <a-marker type='barcode' value='7'>
-            <a-assets>
-                <img id="my-image" src="./assets/profilePic.jpg">
-              </a-assets>
-            
-              <!-- Using the asset management system. -->
-              <a-image src="#my-image"></a-image>
+            <a-scene>
+                <a-assets>
+                    <img id="my-image" src="./assets/profilePic.jpg">
+                  </a-assets>
+                
+                  <!-- Using the asset management system. -->
+                  <a-image src="#my-image"></a-image>
+            </a-scene>
         </a-marker>
 
         <a-marker id="animated-marker" type='barcode' value='6'>
